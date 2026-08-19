@@ -12,16 +12,16 @@ function Wordmark({ onClick }) {
       to="/"
       onClick={onClick}
       aria-label="Warrick Group — home"
-      className="group flex items-center"
+      className="group flex flex-col items-center justify-center gap-1"
     >
       <img
         src="/logo.png"
         alt=""
-        className="h-9 w-auto transition-opacity duration-500 ease-premium group-hover:opacity-85 sm:h-13"
+        className="h-7 w-auto transition-opacity duration-500 ease-premium group-hover:opacity-85"
       />
-      <span className="font-display text-[18px] leading-none font-bold tracking-[0.02em] text-royal transition-colors duration-500 ease-premium group-hover:text-royal-light sm:text-[20px]">
+      {/* <span className="font-display text-[18px] leading-none font-bold tracking-[0.02em] text-royal transition-colors duration-500 ease-premium group-hover:text-royal-light">
         Warrick Group
-      </span>
+      </span> */}
     </Link>
   );
 }

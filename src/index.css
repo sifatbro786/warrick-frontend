@@ -1,23 +1,30 @@
 /* ==========================================================================
    WARRICK CORPORATION — Global Stylesheet
-   Tailwind CSS v4 · White Theme · Royal Purple & Premium Gold
+   Tailwind CSS v4 · Aramco-style corporate minimalism & modern typography
+   --------------------------------------------------------------------------
+   Design language:
+   · Structure comes from white space and hairlines, never from boxes.
+   · Eyebrows are typography only. No pills, no tinted backgrounds, no left
+     borders. Size, tracking, weight and margin carry the hierarchy.
+   · Gold is an accent, not a surface. It appears as a rule, a glyph or a
+     single word, never as a fill behind text.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. FONT IMPORTS
-   'Plus Jakarta Sans' → body copy, UI, buttons, navigation
-   'Cinzel'            → premium corporate headings / wordmark
+   'Space Grotesk'     → Aramco-style modern, high-tech, confident headings & display figures
+   'Plus Jakarta Sans' → body copy, UI, navigation, clean sub-headings
    NOTE: @import rules must appear before any other rule in the file.
    -------------------------------------------------------------------------- */
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@400..700&display=swap");
 
 /* Tailwind v4 single-line entry point (preflight + utilities + variants) */
 @import "tailwindcss";
 
 /* --------------------------------------------------------------------------
    2. DESIGN TOKENS (@theme)
-   Every variable below is automatically exposed as a Tailwind utility.
-   e.g. --color-royal  →  bg-royal / text-royal / border-royal / from-royal
+   Every variable below is exposed as a Tailwind utility.
+   e.g. --color-royal  →  bg-royal / text-royal / border-royal
         --font-display →  font-display
    -------------------------------------------------------------------------- */
 @theme {
@@ -25,48 +32,59 @@
   /* Overriding --font-sans makes Plus Jakarta Sans the document default. */
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  /* Opt-in heading face → use the `font-display` utility on h1–h6, logos, etc. */
-  --font-display: "Cinzel", ui-serif, Georgia, "Times New Roman", serif;
+  
+  /* Modern Aramco-style geometric heading font utility (`font-display`). */
+  --font-display: "Space Grotesk", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Surfaces --------------------------------------------------------- */
+  --color-surface: #ffffff; /* Pure white — cards, modals, navbar */
+  --color-surface-soft: #fafafc; /* Atmosphere white — page background */
+  --color-surface-card: #f4f4f8; /* Subtle section / card wash */
 
   /* ---- Brand · Royal Purple -------------------------------------------- */
-  --color-royal: #2e1a47;         /* Primary brand purple */
-  --color-royal-light: #4a2e73;   /* Hover states, gradients, accents */
-  --color-royal-dark: #180d28;    /* Footers, deep overlays, headers */
+  --color-royal-deep: #1f1130; /* Cinematic overlays, hero wash */
+  --color-royal: #2e1a47; /* Primary brand purple */
+  --color-royal-light: #4a2e73; /* Hover states, accents */
+  --color-royal-dark: #180d28; /* Footers, deep grounds, vignettes */
 
-  /* ---- Brand · Premium Gold -------------------------------------------- */
-  --color-gold: #d4af37;          /* Primary metallic gold */
-  --color-gold-light: #f3e5ab;    /* Hover / highlight / shimmer */
-  --color-gold-dark: #aa8318;     /* Pressed states, borders, depth */
+  /* ---- Brand · Muted Corporate Gold ------------------------------------ */
+  --color-gold: #c5a059; /* Brand gold — dark grounds + decoration */
+  --color-gold-light: #e2c98f; /* Highlight on dark grounds */
+  --color-gold-dark: #8a6d34; /* Accessible gold for text on light */
 
-  /* ---- Surfaces · White Theme ------------------------------------------ */
-  --color-surface: #ffffff;       /* Pure white — cards, modals, navbar */
-  --color-surface-soft: #fafafc;  /* Soft off-white — page background */
-  --color-surface-card: #f4f4f8;  /* Subtle card / section background */
+  /* ---- Text ------------------------------------------------------------- */
+  --color-ink: #18181b; /* Rich charcoal, never pure black */
+  --color-ink-muted: #71717a; /* Muted slate — captions, meta, detail */
 
-  /* ---- Neutral Text ----------------------------------------------------- */
-  --color-ink: #1e293b;           /* Dark charcoal — headings & body */
-  --color-ink-muted: #64748b;     /* Muted gray — captions, meta, labels */
+  /* ---- Structure -------------------------------------------------------- */
+  --color-line: #e4e4e7; /* The hairline. Dividers and rules. */
 
-  /* ---- Elevation & Motion (premium, low-spread shadows) ----------------- */
-  --shadow-premium: 0 10px 40px -12px rgb(46 26 71 / 0.18);
-  --shadow-premium-lg: 0 24px 70px -20px rgb(46 26 71 / 0.25);
-  --shadow-gold: 0 8px 30px -8px rgb(212 175 55 / 0.45);
+  /* ---- Elevation & Motion ----------------------------------------------- */
+  --shadow-premium: 0 10px 40px -12px rgb(31 17 48 / 0.16);
+  --shadow-premium-lg: 0 24px 70px -20px rgb(31 17 48 / 0.22);
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* ---- Keyframed motion -------------------------------------------------- */
-  /* Slow expanding ring — the corporate-film play button. Deliberately long
-     and low-opacity so it reads as a heartbeat, not an attention grab. */
-  --animate-ring-pulse: ring-pulse 3.4s var(--ease-premium) infinite;
+  /* ---- Hero carousel motion --------------------------------------------- */
+  --animate-hero-rise: hero-rise 0.85s var(--ease-premium) both;
+  --animate-hero-pan: hero-pan 14s linear both;
 
-  @keyframes ring-pulse {
-    0% {
-      transform: scale(1);
-      opacity: 0.5;
-    }
-    70%,
-    100% {
-      transform: scale(1.55);
+  @keyframes hero-rise {
+    from {
       opacity: 0;
+      transform: translateY(1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-pan {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
     }
   }
 }
@@ -75,9 +93,18 @@
    3. BASE LAYER — global element defaults
    -------------------------------------------------------------------------- */
 @layer base {
+  :root {
+    --header-height: 6.75rem; /* 2.25rem topbar + 4.5rem navbar */
+  }
+
+  @media (min-width: 64rem) {
+    :root {
+      --header-height: 8rem; /* 2.25rem topbar + 5.75rem navbar */
+    }
+  }
+
   html {
     scroll-behavior: smooth;
-    /* Keeps anchor targets clear of the fixed navbar — tweak to nav height. */
     scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
   }
@@ -92,14 +119,26 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Accessible, on-brand focus ring for keyboard users only. */
+  /* Headings default to Aramco-style crisp display font with tight tracking */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
   :focus-visible {
-    outline: 2px solid var(--color-gold);
+    outline: 2px solid var(--color-gold-dark);
     outline-offset: 2px;
     border-radius: 2px;
   }
 
-  /* Respect users who prefer reduced motion. */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -109,44 +148,44 @@
     *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
+      animation-delay: -1ms !important;
       transition-duration: 0.01ms !important;
+      transition-delay: 0s !important;
     }
   }
 }
 
 /* --------------------------------------------------------------------------
-   4. TEXT SELECTION — Deep Purple background, Premium Gold text
+   4. TEXT SELECTION — Deep royal ground, gold text
    -------------------------------------------------------------------------- */
 ::selection {
   background-color: var(--color-royal);
-  color: var(--color-gold);
+  color: var(--color-gold-light);
   text-shadow: none;
 }
 
 ::-moz-selection {
   background-color: var(--color-royal);
-  color: var(--color-gold);
+  color: var(--color-gold-light);
   text-shadow: none;
 }
 
 /* --------------------------------------------------------------------------
    5. CUSTOM SCROLLBAR
-   WebKit / Blink (Chrome, Edge, Safari, Opera) + Firefox fallback.
    -------------------------------------------------------------------------- */
 ::-webkit-scrollbar {
   width: 10px;
-  height: 10px; /* horizontal scroll areas (tables, carousels) */
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #f1f1f5;
+  background-color: var(--color-surface-soft);
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--color-gold);
   border-radius: 9999px;
-  border: 2px solid #f1f1f5; /* creates the inset "pill" look */
-  transition: background-color 0.3s var(--ease-premium);
+  border: 3px solid var(--color-surface-soft);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -154,48 +193,32 @@
 }
 
 ::-webkit-scrollbar-corner {
-  background-color: #f1f1f5;
+  background-color: var(--color-surface-soft);
 }
 
-/* Firefox — no hover state available, uses the resting gold. */
 @supports (scrollbar-color: auto) {
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-gold) #f1f1f5;
+    scrollbar-color: var(--color-gold) var(--color-surface-soft);
   }
 }
 
 /* --------------------------------------------------------------------------
-   6. CUSTOM UTILITIES (@utility) — optional brand helpers
-   Usable anywhere a Tailwind class is, variants included (md:, hover:, …).
+   6. CUSTOM UTILITIES (@utility)
    -------------------------------------------------------------------------- */
 
-/* Metallic gold gradient text — ideal for hero headlines and stat figures. */
-@utility text-gold-gradient {
-  background-image: linear-gradient(
-    100deg,
-    var(--color-gold-dark) 0%,
-    var(--color-gold) 35%,
-    var(--color-gold-light) 55%,
-    var(--color-gold) 75%,
-    var(--color-gold-dark) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Eyebrow: Typography only. No left border, no pill box. Clean spacing & uppercase. */
+@utility eyebrow {
+  font-size: 0.6875rem; /* 11px */
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
 }
 
-/* Deep royal gradient — hero panels, footers, CTA bands. */
-@utility bg-royal-gradient {
-  background-image: linear-gradient(
-    135deg,
-    var(--color-royal-dark) 0%,
-    var(--color-royal) 50%,
-    var(--color-royal-light) 100%
-  );
-}
-
-/* Hairline gold divider / underline accent. */
-@utility border-gold-hairline {
-  border-color: color-mix(in oklab, var(--color-gold) 35%, transparent);
+/* Hairline rule used as a section marker or metric underline */
+@utility rule-gold {
+  display: block;
+  height: 1px;
+  background-color: var(--color-gold);
 }
