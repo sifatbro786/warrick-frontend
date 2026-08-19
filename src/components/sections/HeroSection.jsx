@@ -12,26 +12,17 @@ import {
   Thumbs,
 } from "swiper/modules";
 import { heroSlides } from "../../data/homeData";
+import { buildSrcSet, unsplash } from "../../lib/images";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 
-/* ==========================================================================
-   Art direction
-   --------------------------------------------------------------------------
-   Unsplash placeholders served responsively. Swap for licensed brand
-   photography before launch; keep replacements low-key and high-contrast so
-   they hold up under the royal wash.
-   ========================================================================== */
-const unsplash = (photoId, width) =>
-  `https://images.unsplash.com/photo-${photoId}?auto=format&fit=crop&q=70&w=${width}`;
-
-const buildSrcSet = (photoId) =>
-  [1280, 1920, 2560]
-    .map((width) => `${unsplash(photoId, width)} ${width}w`)
-    .join(", ");
+/* Art direction note: the Unsplash helpers in src/lib/images.js serve
+   placeholders. Swap them for licensed brand photography before launch, and
+   keep replacements low-key and high-contrast so they hold up under the
+   royal wash. */
 
 const pad = (value) => String(value).padStart(2, "0");
 

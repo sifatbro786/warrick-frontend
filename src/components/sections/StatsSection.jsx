@@ -16,7 +16,7 @@ const EASE = [0.22, 1, 0.36, 1];
    non-overlapping media ranges, and each one is the only declaration touching
    its property, so nothing here depends on cascade order. */
 const CELL = [
-  "group bg-surface-soft py-10 sm:py-12",
+  "group bg-surface py-10 sm:py-12",
   /* two columns: even cells sit right of a divider, odd cells left of one */
   "sm:max-lg:[&:nth-child(even)]:pl-8",
   "sm:max-lg:[&:nth-child(odd)]:pr-8",
@@ -29,9 +29,11 @@ const CELL = [
 /* ==========================================================================
    StatsSection
    --------------------------------------------------------------------------
-   The off-white counterweight to the hero. Coming straight off a full-bleed
-   royal plate, the switch to paper is what tells the reader the fold has been
+   The counterweight to the hero. Coming straight off a full-bleed royal
+   plate, the switch to paper is what tells the reader the fold has been
    crossed, so the contrast is doing structural work rather than decoration.
+   Cell grounds must match the section ground for the gap-px dividers to read
+   as hairlines, so the two move together.
 
    Structure comes from hairlines and white space only. The dividers are the
    1px gaps in a `gap-px` grid sitting on a line-coloured ground, which is the
@@ -58,7 +60,7 @@ export default function StatsSection() {
   return (
     <section
       aria-labelledby="impact-heading"
-      className="border-t border-line bg-surface-soft"
+      className="border-t border-line bg-surface"
     >
       <div className="mx-auto max-w-360 px-5 py-24 sm:px-6 lg:px-10 lg:py-32">
         {/* ---------------- Header ---------------- */}

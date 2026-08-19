@@ -1,5 +1,6 @@
 import TopBar from "../common/TopBar";
 import Navbar from "../common/Navbar";
+import Footer from "../common/Footer";
 
 /**
  * SiteLayout
@@ -25,6 +26,8 @@ export default function SiteLayout({ children }) {
       <main id="main" className="flex-1">
         {children}
       </main>
+
+      <Footer />
     </div>
   );
 }

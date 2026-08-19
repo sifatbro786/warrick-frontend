@@ -11,8 +11,15 @@ import PlaceholderPage from "../pages/PlaceholderPage";
  */
 const PLACEHOLDER_ROUTES = [
   { path: "/about", eyebrow: "The Group", title: "About Us" },
+  { path: "/leadership", eyebrow: "The Group", title: "Leadership & Heritage" },
+  { path: "/board", eyebrow: "The Group", title: "Board of Directors" },
   { path: "/businesses", eyebrow: "The Group", title: "Our Businesses" },
   { path: "/sustainability", eyebrow: "Responsibility", title: "Sustainability" },
+  {
+    path: "/ethics-governance",
+    eyebrow: "Responsibility",
+    title: "Ethics and Governance",
+  },
   { path: "/innovation", eyebrow: "Forward", title: "Innovation" },
   { path: "/news", eyebrow: "Newsroom", title: "News" },
   { path: "/contact", eyebrow: "Get in Touch", title: "Inquire" },
@@ -22,6 +29,13 @@ const PLACEHOLDER_ROUTES = [
   { path: "/investor-relations", eyebrow: "Shareholders", title: "Investor Relations" },
   { path: "/global-presence", eyebrow: "Worldwide", title: "Global Presence" },
   { path: "/media-center", eyebrow: "Press", title: "Media Center" },
+  { path: "/annual-reports", eyebrow: "Insights", title: "Annual Reports" },
+  { path: "/brand-assets", eyebrow: "Insights", title: "Brand Assets" },
+
+  /* Footer legal strip */
+  { path: "/privacy", eyebrow: "Legal", title: "Privacy Policy" },
+  { path: "/terms", eyebrow: "Legal", title: "Terms of Service" },
+  { path: "/sitemap", eyebrow: "Legal", title: "Sitemap" },
 ];
 
 /**

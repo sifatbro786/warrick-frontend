@@ -36,6 +36,11 @@
   /* Modern Aramco-style geometric heading font utility (`font-display`). */
   --font-display: "Space Grotesk", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 
+  /* Signature wordmark. A serif sets the founder's signature apart from the
+     two sans faces without pulling in a third webfont. Swap for a real
+     signature asset (SVG) when one exists. */
+  --font-signature: ui-serif, Georgia, "Times New Roman", serif;
+
   /* ---- Surfaces --------------------------------------------------------- */
   --color-surface: #ffffff; /* Pure white — cards, modals, navbar */
   --color-surface-soft: #fafafc; /* Atmosphere white — page background */
@@ -65,6 +70,23 @@
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* ---- Hero carousel motion --------------------------------------------- */
+  /* Operational status indicator in the footer. A slow expanding ring behind
+     a solid dot: it should read as a heartbeat, not as an alert. The
+     reduced-motion block below collapses it to a static dot. */
+  --animate-status-pulse: status-pulse 2.8s var(--ease-premium) infinite;
+
+  @keyframes status-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    70%,
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+
   --animate-hero-rise: hero-rise 0.85s var(--ease-premium) both;
   --animate-hero-pan: hero-pan 14s linear both;
 

@@ -81,3 +81,92 @@ export const mainNavigation = [
    Header call-to-action.
    -------------------------------------------------------------------------- */
 export const primaryCta = { label: "Inquire", path: "/contact" };
+
+/* ==========================================================================
+   FOOTER
+   --------------------------------------------------------------------------
+   Every path below resolves to a real route in src/routes/AppRoutes.jsx.
+   Check that before adding a link: a dead footer link is the kind of thing
+   nobody notices until a journalist follows it.
+   ========================================================================== */
+
+/* Operating companies. These carry a tagline because the footer is often the
+   first place a reader meets the group structure. */
+export const footerEntities = {
+  id: "entities",
+  title: "Group Entities",
+  links: [
+    {
+      label: "Warrick Corporation",
+      tagline: "Parent holding and infrastructure",
+      path: "/businesses",
+    },
+    {
+      label: "Clara",
+      tagline: "Consumer technology and e-commerce",
+      path: "/businesses/clara",
+    },
+    {
+      label: "Warrick Motors",
+      tagline: "Automotive and advanced mobility",
+      path: "/businesses/warrick-motors",
+    },
+  ],
+};
+
+/* Plain link columns. */
+export const footerColumns = [
+  {
+    id: "enterprise",
+    title: "Enterprise",
+    links: [
+      { label: "Leadership & Heritage", path: "/leadership" },
+      { label: "Board of Directors", path: "/board" },
+      { label: "Sustainability & ESG", path: "/sustainability" },
+      { label: "Investor Relations", path: "/investor-relations" },
+      { label: "Careers", path: "/careers" },
+    ],
+  },
+  {
+    id: "insights",
+    title: "Insights",
+    links: [
+      { label: "Press Releases", path: "/news" },
+      { label: "Annual Reports", path: "/annual-reports" },
+      { label: "Brand Assets", path: "/brand-assets" },
+      /* Shares a destination with "Ethics & Compliance" in the legal strip.
+         Split them if governance ever gets its own page. */
+      { label: "Corporate Governance", path: "/ethics-governance" },
+    ],
+  },
+];
+
+/* Registered office, operating hubs and the corporate desk.
+   NOTE: placeholder details. Replace with the registered address and a
+   monitored inbox before launch. */
+export const headOffice = {
+  id: "headquarters",
+  title: "Global Headquarters",
+  address: ["One Meridian Court", "London EC2N 4AY", "United Kingdom"],
+  hubs: ["London", "Dubai", "Dhaka", "Singapore"],
+  email: "corporate@warrickgroup.com",
+  phone: "+44 20 7946 0112",
+};
+
+/* Bottom strip. */
+export const footerLegal = [
+  { label: "Privacy Policy", path: "/privacy" },
+  { label: "Terms of Service", path: "/terms" },
+  { label: "Ethics & Compliance", path: "/ethics-governance" },
+  { label: "Sitemap", path: "/sitemap" },
+];
+
+/* Operational status shown at the end of the legal strip.
+   NOTE: currently a static declaration, not a reading. Wire `state` to the
+   real status feed before launch, or remove it. A status indicator that
+   cannot report a problem is worse than none. */
+export const operationalStatus = {
+  label: "Global Operations",
+  state: "Nominal",
+  locale: "English (Global)",
+};
