@@ -64,7 +64,7 @@ export default function AboutOverviewSection() {
           <div className="lg:col-span-6">
             <motion.div variants={rise} className="relative overflow-hidden">
               <img
-                src="/warrick.jpeg"
+                src="/asma.jpeg"
                 sizes="(min-width: 64rem) 46vw, 100vw"
                 alt={`${principal.name}, ${principal.title} of Warrick Corporation`}
                 loading="lazy"
@@ -94,7 +94,8 @@ export default function AboutOverviewSection() {
 
               <figcaption className="mt-12">
                 <p className="font-display text-[clamp(1.5rem,2vw,2rem)] leading-none font-bold tracking-tight text-royal">
-                  {principal.name}
+                  {/* {principal.name} */}
+                  Asma Akber
                 </p>
 
                 <p className="eyebrow mt-5 text-ink-muted">
