@@ -105,17 +105,6 @@ export default function AboutOverviewSection() {
                 <p className="eyebrow mt-5 text-ink-muted">
                   {principal.title}, Warrick Corporation
                 </p>
-
-                {/* Signature. Decorative and aria-hidden: the name is already
-                    announced directly above, and a screen reader repeating it
-                    adds nothing. Replace with the real signature asset when
-                    there is one. */}
-                <p
-                  aria-hidden="true"
-                  className="mt-9 font-signature text-[clamp(1.75rem,2.4vw,2.25rem)] leading-none text-royal/45 italic"
-                >
-                  {principal.name}
-                </p>
               </figcaption>
             </motion.figure>
           </div>
