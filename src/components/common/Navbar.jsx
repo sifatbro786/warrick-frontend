@@ -4,29 +4,24 @@ import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { mainNavigation, primaryCta } from "../../data/navigationData";
 
 /* ==========================================================================
-   Wordmark — Cinzel lockup with a single gold diamond as the accent mark.
+   Wordmark — crown mark paired with the Cinzel lockup.
    ========================================================================== */
 function Wordmark({ onClick }) {
   return (
     <Link
       to="/"
       onClick={onClick}
-      aria-label="Warrick Corporation — home"
-      className="group flex shrink-0 items-baseline gap-2.5"
+      aria-label="Warrick Group — home"
+      className="group flex items-center"
     >
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-[19px] leading-none font-bold tracking-[0.02em] text-royal transition-colors duration-500 ease-premium group-hover:text-royal-light sm:text-[22px]">
-          WARRICK
-        </span>
-        <span className="mt-1.25 text-[8px] leading-none font-medium tracking-[0.42em] text-ink-muted uppercase sm:text-[9px]">
-          Corporation
-        </span>
-      </span>
-      {/* Gold accent mark — rotates a touch on hover, nothing more. */}
-      <span
-        aria-hidden="true"
-        className="size-1.25 rotate-45 bg-gold transition-all duration-700 ease-premium group-hover:rotate-135 group-hover:bg-gold-dark"
+      <img
+        src="/logo.png"
+        alt=""
+        className="h-9 w-auto transition-opacity duration-500 ease-premium group-hover:opacity-85 sm:h-13"
       />
+      <span className="font-display text-[18px] leading-none font-bold tracking-[0.02em] text-royal transition-colors duration-500 ease-premium group-hover:text-royal-light sm:text-[20px]">
+        Warrick Group
+      </span>
     </Link>
   );
 }
