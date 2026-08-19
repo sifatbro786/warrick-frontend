@@ -131,7 +131,7 @@ export default function HeroSection() {
                 right, and a base vignette that hands off to the control bar. */}
             <div aria-hidden="true" className="absolute inset-0 -z-10">
               <div className="absolute inset-0 bg-royal-deep/5" />
-              <div className="absolute inset-0 bg-linear-to-r from-royal-deep via-royal-deep/75 to-royal-deep/15" />
+              <div className="absolute inset-0 bg-linear-to-r from-royal-deep/30 via-royal-deep/50 to-royal-deep/10" />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-royal-dark to-transparent" />
             </div>
 

@@ -1,14 +1,13 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { aboutOverview } from "../../data/homeData";
-import { buildSrcSet, unsplash } from "../../lib/images";
 
 /* Matches --ease-premium in index.css so JS and CSS motion feel identical. */
 const EASE = [0.22, 1, 0.36, 1];
 
 /* The portrait column never exceeds about 700px, so it gets its own widths
    rather than the full-bleed ladder the hero and portfolio plates use. */
-const PORTRAIT_WIDTHS = [600, 800, 1200, 1600];
+// const PORTRAIT_WIDTHS = [600, 800, 1200, 1600];
 
 /* ==========================================================================
    AboutOverviewSection
@@ -65,11 +64,7 @@ export default function AboutOverviewSection() {
           <div className="lg:col-span-6">
             <motion.div variants={rise} className="relative overflow-hidden">
               <img
-                src={unsplash(principal.photoId, 800, principal.photoQuality)}
-                srcSet={buildSrcSet(principal.photoId, {
-                  widths: PORTRAIT_WIDTHS,
-                  quality: principal.photoQuality,
-                })}
+                src="/warrick.jpeg"
                 sizes="(min-width: 64rem) 46vw, 100vw"
                 alt={`${principal.name}, ${principal.title} of Warrick Corporation`}
                 loading="lazy"
