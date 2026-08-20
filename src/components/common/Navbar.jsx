@@ -19,7 +19,7 @@ function Wordmark({ onClick }) {
         alt=""
         className="h-7 w-auto transition-opacity duration-500 ease-premium group-hover:opacity-85"
       />
-      <span className="font-display text-[18px] leading-none font-bold tracking-[0.02em] text-royal transition-colors duration-500 ease-premium group-hover:text-royal-light">
+      <span className="font-display text-[14px] leading-none font-bold tracking-[0.02em] text-gold transition-colors duration-500 ease-premium group-hover:text-royal-light">
         Warrick Group
       </span>
     </Link>

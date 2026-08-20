@@ -18,12 +18,12 @@
    -------------------------------------------------------------------------- */
 export const heroSlides = [
   {
-    id: "warrick-corp",
-    name: "Warrick Corp",
+    id: "warrick-corporation",
+    name: "Warrick Corporation",
     sector: "Energy and Infrastructure",
     headline: "The balance sheet the rest of the group is built on.",
-    body: "Warrick Corp holds our energy assets, industrial sites and capital programmes. It carries the long payback projects so the operating companies can stay focused on their own markets.",
-    ctaLabel: "Inside Warrick Corp",
+    body: "Warrick Corporation holds our energy assets, industrial sites and capital programmes. It carries the long payback projects so the operating companies can stay focused on their own markets.",
+    ctaLabel: "Inside Warrick Corporation",
     path: "/businesses",
     photoId: "1486406146926-c627a92ad1ab",
     focal: "center 35%",
@@ -106,7 +106,7 @@ export const groupMetrics = [
    -------------------------------------------------------------------------- */
 export const portfolioEntities = [
   {
-    id: "warrick-corp",
+    id: "warrick-corporation",
     index: "01",
     name: "Warrick Corporation",
     sector: "Parent Holding and Infrastructure",
@@ -241,7 +241,7 @@ export const aboutOverview = {
    actual partner list, and confirm usage rights, before launch.
    -------------------------------------------------------------------------- */
 export const brandEntities = [
-  { id: "warrick-corp", name: "Warrick Corp", type: "entity" },
+  { id: "warrick-corporation", name: "Warrick Corporation", type: "entity" },
   { id: "clara", name: "Clara", type: "entity" },
   { id: "warrick-motors", name: "Warrick Motors", type: "entity" },
   { id: "meridian", name: "Meridian Capital", type: "partner" },

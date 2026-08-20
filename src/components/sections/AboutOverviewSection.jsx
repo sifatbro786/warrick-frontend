@@ -95,7 +95,7 @@ export default function AboutOverviewSection() {
               <figcaption className="mt-12">
                 <p className="font-display text-[clamp(1.5rem,2vw,2rem)] leading-none font-bold tracking-tight text-royal">
                   {/* {principal.name} */}
-                  Asma Akber
+                  Asma Akbar
                 </p>
 
                 <p className="eyebrow mt-5 text-ink-muted">
