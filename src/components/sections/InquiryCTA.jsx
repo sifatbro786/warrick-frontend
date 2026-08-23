@@ -12,6 +12,23 @@ const EASE = [0.22, 1, 0.36, 1];
    dedicated page, and a two-field teaser on a landing page only ever collects
    half an enquiry. Each channel is a full-width row so the hit area matches
    how deliberate the click is.
+
+   GROUND — read this before changing the background.
+   This block and the footer directly beneath it are the only two dark
+   surfaces at the end of the page, so they have to separate on their own;
+   there is no light section between them to do it for them. The separation
+   is deliberately carried by two things at once, because either alone is too
+   weak on a dark screen:
+
+     · Value — this section sits on `royal` (#2e1a47), the footer drops to
+       `royal-dark` (#180d28). Roughly eight points of L*, which is the
+       smallest step that still reads as two planes rather than one.
+     · Finish — this section is lit (a directional wash from royal-light),
+       the footer is matte and flat. A lit panel over a matte one is what
+       actually sells the seam; the value step alone is not enough.
+
+   Keep both. If this ever moves back onto `royal-dark`, the footer will
+   fuse with it again.
    ========================================================================== */
 export default function InquiryCTA() {
   const shouldReduceMotion = useReducedMotion();
@@ -26,7 +43,19 @@ export default function InquiryCTA() {
   };
 
   return (
-    <section aria-labelledby="inquiries-heading" className="bg-royal-dark">
+    <section
+      aria-labelledby="inquiries-heading"
+      className="relative isolate overflow-hidden bg-royal"
+    >
+      {/* Directional wash. Light enters top-left, where the statement is, and
+          falls away toward the footer — so the block reads as a lit panel and
+          its bottom edge is already darker than its top by the time the
+          footer's matte ground begins. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-linear-to-br from-royal-light/45 via-royal/0 to-royal-deep/70" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-royal-deep/60 to-transparent" />
+      </div>
+
       <motion.div
         initial="hidden"
         whileInView="show"

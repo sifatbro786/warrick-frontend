@@ -1,4 +1,3 @@
-import { useId, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   footerColumns,
@@ -6,6 +5,7 @@ import {
   footerLegal,
   headOffice,
   operationalStatus,
+  primaryCta,
 } from "../../data/navigationData";
 
 /* ==========================================================================
@@ -24,99 +24,40 @@ function ColumnHeading({ id, children }) {
 }
 
 /* ==========================================================================
-   DispatchForm
-   --------------------------------------------------------------------------
-   A rule and a text button, nothing else.
-
-   There is no subscription endpoint in this project yet. Rather than confirm
-   a signup that never happened, the default submit hands the request to the
-   corporate inbox over mailto, which actually reaches a person today. Pass
-   `onSubscribe` once a real endpoint exists and that path takes over.
-   ========================================================================== */
-function DispatchForm({ onSubscribe }) {
-  const inputId = useId();
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const address = email.trim();
-    if (!address) return;
-
-    if (onSubscribe) {
-      onSubscribe(address);
-      setSent(true);
-      setEmail("");
-      return;
-    }
-
-    const subject = encodeURIComponent("Executive Dispatch briefing request");
-    const body = encodeURIComponent(
-      `Please add this address to the Executive Dispatch list:\n\n${address}\n`,
-    );
-    window.location.href = `mailto:${headOffice.email}?subject=${subject}&body=${body}`;
-    setSent(true);
-    setEmail("");
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="mt-8 max-w-md">
-      <label htmlFor={inputId} className="sr-only">
-        Corporate email address for the executive dispatch
-      </label>
-
-      <div className="flex items-center gap-6 border-b border-white/20 pb-3 transition-colors duration-500 ease-premium focus-within:border-gold/70">
-        <input
-          id={inputId}
-          type="email"
-          required
-          autoComplete="email"
-          spellCheck="false"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="Enter corporate email address"
-          className="min-w-0 flex-1 bg-transparent text-[14px] text-white placeholder:text-white/35 focus:outline-none"
-        />
-
-        <button
-          type="submit"
-          className="group inline-flex shrink-0 items-center gap-3 text-[11px] font-semibold tracking-[0.2em] text-white/70 uppercase transition-colors duration-500 ease-premium hover:text-gold-light focus-visible:text-gold-light"
-        >
-          Request Briefing
-          <span
-            aria-hidden="true"
-            className="text-gold transition-transform duration-500 ease-premium group-hover:translate-x-1.5"
-          >
-            &rarr;
-          </span>
-        </button>
-      </div>
-
-      {/* Announced politely so a screen reader hears the outcome without the
-          focus being yanked out of the form. */}
-      <p aria-live="polite" className="mt-4 min-h-5 text-[12px] text-white/45">
-        {sent
-          ? "Your mail client should open with the request ready to send."
-          : null}
-      </p>
-    </form>
-  );
-}
-
-/* ==========================================================================
    Footer
    --------------------------------------------------------------------------
-   Deep royal ground, hairlines at 10% white, and nothing else structural.
+   Matte royal ground, hairlines at 10% white, and nothing else structural.
    Mounted in SiteLayout rather than on a page, so every route carries it.
+
+   GROUND — the footer is the darkest surface on the site (`royal-dark`) and
+   is deliberately flat: no wash, no gradient. InquiryCTA directly above it
+   sits a step lighter on `royal` and is lit. See the GROUND note in
+   InquiryCTA.jsx before changing either one — they are one decision.
+
+   NO CAPTURE — there is no email field here on purpose. A newsletter input
+   in the footer only pays off with a real list, a double opt-in and a
+   consent record behind it; without those it is a form that quietly drops
+   addresses on the floor. Every route to a person is a link to a page that
+   owns the transaction. If a dispatch list is commissioned later, it belongs
+   on /investor-relations with the compliance copy beside it, not here.
    ========================================================================== */
-export default function Footer({ onSubscribe }) {
+export default function Footer() {
   /* Computed rather than written in, so the notice never goes stale. */
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-royal-deep">
+    <footer className="relative bg-royal-dark">
+      {/* Seam. A gold hairline that fades out at both ends, so the boundary
+          with whatever dark section precedes the footer is stated once,
+          quietly, instead of being left to a value step the eye can miss on a
+          dim display. Decorative and non-interactive. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-gold/45 to-transparent"
+      />
+
       <div className="mx-auto max-w-360 px-5 sm:px-6 lg:px-10">
-        {/* ============ Statement and dispatch ============ */}
+        {/* ============ Statement and corporate desk ============ */}
         <div className="grid gap-12 border-b border-white/10 py-20 lg:grid-cols-12 lg:gap-x-20 lg:py-24">
           <div className="lg:col-span-6">
             <Link to="/" className="group inline-block">
@@ -132,17 +73,59 @@ export default function Footer({ onSubscribe }) {
             </p>
           </div>
 
+          {/* The desk replaces the old signup block. Same slot, same weight,
+              but every element here resolves to a monitored destination: two
+              live channels and one route to the contact page. The address and
+              hubs stay down in the directory column, so nothing is printed
+              twice. */}
           <div className="lg:col-span-5 lg:col-start-8">
-            <ColumnHeading id="footer-dispatch">
-              Executive Dispatch
-            </ColumnHeading>
+            <ColumnHeading id="footer-desk">Corporate Desk</ColumnHeading>
 
             <p className="mt-6 max-w-[42ch] text-[14px] leading-relaxed text-white/50">
-              Results, capital announcements and group briefings, sent to
-              institutional subscribers as they are published.
+              Group enquiries are answered from the London office within one
+              business day. Media and investor requests are routed on arrival.
             </p>
 
-            <DispatchForm onSubscribe={onSubscribe} />
+            <div className="mt-8 space-y-5 border-t border-white/12 pt-8">
+              <a
+                href={`mailto:${headOffice.email}`}
+                className="group flex items-baseline justify-between gap-6 text-[15px]"
+              >
+                <span className="text-white/80 transition-colors duration-500 ease-premium group-hover:text-gold-light">
+                  {headOffice.email}
+                </span>
+                <span className="shrink-0 text-[11px] tracking-[0.18em] text-white/35 uppercase">
+                  Email
+                </span>
+              </a>
+
+              <a
+                href={`tel:${headOffice.phone.replace(/\s+/g, "")}`}
+                className="group flex items-baseline justify-between gap-6 text-[15px]"
+              >
+                <span className="text-white/80 transition-colors duration-500 ease-premium group-hover:text-gold-light">
+                  {headOffice.phone}
+                </span>
+                <span className="shrink-0 text-[11px] tracking-[0.18em] text-white/35 uppercase">
+                  Direct
+                </span>
+              </a>
+            </div>
+
+            <Link
+              to={primaryCta.path}
+              className="group mt-8 inline-flex items-center gap-4 border-b border-gold/40 pb-2 transition-colors duration-500 ease-premium hover:border-gold"
+            >
+              <span className="text-[11px] font-semibold tracking-[0.2em] text-white uppercase">
+                Submit an Inquiry
+              </span>
+              <span
+                aria-hidden="true"
+                className="text-gold transition-transform duration-500 ease-premium group-hover:translate-x-1.5"
+              >
+                &rarr;
+              </span>
+            </Link>
           </div>
         </div>
 
@@ -195,7 +178,10 @@ export default function Footer({ onSubscribe }) {
             </nav>
           ))}
 
-          {/* Headquarters is prose and contact detail, not a link list. */}
+          {/* Headquarters is prose, not a link list — and not contact detail
+              either any more: the email and phone moved up to the Corporate
+              Desk when the signup block came out, so this column is the
+              registered office and the operating hubs only. */}
           <div className="lg:col-span-3">
             <ColumnHeading id="footer-headquarters">
               {headOffice.title}
@@ -223,21 +209,6 @@ export default function Footer({ onSubscribe }) {
                 </span>
               ))}
             </p>
-
-            <div className="mt-7 space-y-2 text-[14px]">
-              <a
-                href={`mailto:${headOffice.email}`}
-                className="block text-white/70 transition-colors duration-300 ease-premium hover:text-gold-light"
-              >
-                {headOffice.email}
-              </a>
-              <a
-                href={`tel:${headOffice.phone.replace(/\s+/g, "")}`}
-                className="block text-white/70 transition-colors duration-300 ease-premium hover:text-gold-light"
-              >
-                {headOffice.phone}
-              </a>
-            </div>
           </div>
         </div>
 
