@@ -10,12 +10,12 @@ import AppRoutes from "./routes/AppRoutes";
  * lives in src/pages, src/routes and src/components.
  */
 export default function App() {
-  return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <SiteLayout>
-        <AppRoutes />
-      </SiteLayout>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <ScrollToTop />
+            <SiteLayout>
+                <AppRoutes />
+            </SiteLayout>
+        </BrowserRouter>
+    );
 }

@@ -3,10 +3,12 @@ import HomePage from "../pages/HomePage";
 import AboutPage from "../pages/AboutPage";
 import NewsPage from "../pages/NewsPage";
 import ContactPage from "../pages/ContactPage";
+import BusinessesPage from "../pages/BusinessesPage";
 import SustainabilityPage from "../pages/SustainabilityPage";
 import InnovationPage from "../pages/InnovationPage";
 import BusinessDetail from "../pages/BusinessDetail";
 import PlaceholderPage from "../pages/PlaceholderPage";
+import NotFoundPage from "../pages/NotFoundPage";
 
 /**
  * Routes still waiting on their production page. Listing them as data keeps
@@ -17,7 +19,6 @@ import PlaceholderPage from "../pages/PlaceholderPage";
 const PLACEHOLDER_ROUTES = [
     { path: "/leadership", eyebrow: "The Group", title: "Leadership & Heritage" },
     { path: "/board", eyebrow: "The Group", title: "Board of Directors" },
-    { path: "/businesses", eyebrow: "The Group", title: "Our Businesses" },
     {
         path: "/ethics-governance",
         eyebrow: "Responsibility",
@@ -60,6 +61,7 @@ export default function AppRoutes() {
             <Route path="/sustainability" element={<SustainabilityPage />} />
             <Route path="/innovation" element={<InnovationPage />} />
 
+            <Route path="/businesses" element={<BusinessesPage />} />
             <Route path="/businesses/:slug" element={<BusinessDetail />} />
 
             {PLACEHOLDER_ROUTES.map(({ path, eyebrow, title }) => (
@@ -70,16 +72,10 @@ export default function AppRoutes() {
                 />
             ))}
 
-            <Route
-                path="*"
-                element={
-                    <PlaceholderPage
-                        eyebrow="Error 404"
-                        title="Page Not Found"
-                        description="The address you followed does not match anything on this site. It may have moved, or the link may be out of date."
-                    />
-                }
-            />
+            {/* Unmatched address. PlaceholderPage above is for routes that
+                exist and are still being built; this is for an address that
+                does not resolve at all, and the two must not read the same. */}
+            <Route path="*" element={<NotFoundPage />} />
         </Routes>
     );
 }

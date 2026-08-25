@@ -39,7 +39,6 @@ export const stockTicker = {
    Secondary links — right side of the utility strip.
    -------------------------------------------------------------------------- */
 export const utilityLinks = [
-  { label: "Careers", path: "/careers" },
   { label: "Investor Relations", path: "/investor-relations" },
   { label: "Global Presence", path: "/global-presence" },
   { label: "Media Center", path: "/media-center" },

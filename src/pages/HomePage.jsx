@@ -33,16 +33,16 @@ import InquiryCTA from "../components/sections/InquiryCTA";
  * SiteLayout, which puts it below this page and on every other route too.
  */
 export default function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <StatsSection />
-      <AboutOverviewSection />
-      <PortfolioSection />
-      <BrandLogosSection />
-      <ValuesESGSection />
-      <NewsSection />
-      <InquiryCTA />
-    </>
-  );
+    return (
+        <>
+            <HeroSection />
+            <StatsSection />
+            <AboutOverviewSection />
+            <PortfolioSection />
+            <BrandLogosSection />
+            <ValuesESGSection />
+            <NewsSection />
+            <InquiryCTA />
+        </>
+    );
 }
