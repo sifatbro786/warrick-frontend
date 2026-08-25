@@ -157,7 +157,6 @@ export const headOffice = {
 export const footerLegal = [
   { label: "Privacy Policy", path: "/privacy" },
   { label: "Terms of Service", path: "/terms" },
-  { label: "Ethics & Compliance", path: "/ethics-governance" },
   { label: "Sitemap", path: "/sitemap" },
 ];
 
