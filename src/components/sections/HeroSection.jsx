@@ -129,9 +129,9 @@ export default function HeroSection() {
 
                         {/* Readability wash: Deep Cinematic Charcoal & Royal Navy Wash */}
                         <div aria-hidden="true" className="absolute inset-0 -z-10">
-                            <div className="absolute inset-0 bg-[#0B0F19]/40" />
-                            <div className="absolute inset-0 bg-linear-to-r from-[#0B0F19] via-[#0B0F19]/80 to-transparent" />
-                            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-[#0B0F19] via-[#0B0F19]/60 to-transparent" />
+                            <div className="absolute inset-0 bg-[#0B0F19]/10" />
+                            <div className="absolute inset-0 bg-linear-to-r from-[#0B0F19] via-[#0B0F19]/50 to-transparent" />
+                            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-[#0B0F19] via-[#0B0F19]/40 to-transparent" />
                         </div>
 
                         {/* Editorial column */}
